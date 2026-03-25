@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>🍼 아기맞이 준비물</title>
+
+<!-- PWA -->
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#F472B6">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-15D5NSZ95"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-15D5NSZ95');
+</script>
+
+<!-- ════════════════════════════════
+     📌 OG 태그 (카카오톡/SNS 링크 미리보기)
+     ⚠️ YOUR_GITHUB_USERNAME / YOUR_REPO_NAME 을
+        본인 GitHub 정보로 교체하세요!
+     예) https://홍길동.github.io/baby-checklist/thumbnail.jpg
+     ════════════════════════════════ -->
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="🍼 아기맞이 준비물">
+<meta property="og:description" content="배우자와 함께 준비해요 🤰✨">
+<meta property="og:image"       content="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/thumbnail.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url"         content="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/">
+<meta property="og:locale"      content="ko_KR">
+
+<!-- 카카오톡 전용 -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="🍼 아기맞이 준비물">
+<meta name="twitter:description" content="배우자와 함께 준비해요 🤰✨">
+<meta name="twitter:image"       content="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/thumbnail.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- ════════════════════════════════════════════
+     🔥 FIREBASE REALTIME DATABASE 설정 방법
+     1. https://console.firebase.google.com 접속
+     2. 프로젝트 생성 → 웹 앱 추가 (firebaseConfig 복사)
+     3. 빌드 → Realtime Database → 데이터베이스 만들기
+     4. 규칙(Rules) 탭 → 아래 규칙으로 교체 후 게시:
+        { "rules": { ".read": true, ".write": true } }
+     5. 아래 FIREBASE_CONFIG 값을 본인 것으로 교체
+        ※ databaseURL 필수!
+     ════════════════════════════════════════════ -->
+<script>
+// ════════════════════════════════════════════
+// 🔥 여기만 수정하세요 (Firebase 설정)
+// ════════════════════════════════════════════
+window.FIREBASE_CONFIG = {
+  apiKey:      "YOUR_API_KEY",
+  authDomain:  "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId:   "YOUR_PROJECT_ID",
+  databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.asia-southeast1.firebasedatabase.app",
+  appId:       "YOUR_APP_ID"
+};
+// ════════════════════════════════════════════
+
+window._firebaseDB = null;
+window._fbSdkReady = false;
+
+const _isFbConfigured = window.FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY" &&
+                        window.FIREBASE_CONFIG.databaseURL.indexOf("YOUR_PROJECT") === -1;
+
+function _loadScript(src, cb) {
+  const s = document.createElement('script');
+  s.src = src;
+  s.onload = cb;
+  s.onerror = function() { console.warn('SDK 로드 실패:', src); cb(); };
+  document.head.appendChild(s);
+}
+
+if (_isFbConfigured) {
+  // app-compat → database-compat 순서대로 로드 후 초기화
+  _loadScript("https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js", function() {
+    _loadScript("https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js", function() {
+      try {
+        firebase.initializeApp(window.FIREBASE_CONFIG);
+        window._firebaseDB = firebase.database();
+      } catch(e) { console.warn("Firebase 초기화 실패:", e); }
+      window._fbSdkReady = true;
+      document.dispatchEvent(new Event('fbSdkReady'));
+    });
+  });
+} else {
+  // Firebase 미설정 → 즉시 로컬모드로 진행
+  window._fbSdkReady = true;
+  document.dispatchEvent(new Event('fbSdkReady'));
+}
+</script>
+
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { font-size: 16px; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #FFF5F7;
+  color: #2A2A2A;
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
+
+/* ── CSS VARS ── */
+:root {
+  --pink: #F472B6;
+  --pink-light: #FDE8F4;
+  --pink-deep: #DB2777;
+  --mint: #34D399;
+  --sky: #60A5FA;
+  --amber: #FBBF24;
+  --purple: #A78BFA;
+  --orange: #FB923C;
+  --bg: #FFF5F7;
+  --card: #FFFFFF;
+  --border: #FCE7F3;
+  --text: #2A2A2A;
+  --muted: #9CA3AF;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --header-h: 56px;
+  --dday-h: 0px;
+  --nav-h: 64px;
+}
+body.has-dday { --dday-h: 86px; }
+
+/* ── D-DAY BANNER ── */
+.dday-banner {
+  position: fixed;
+  top: var(--header-h);
+  left: 0; right: 0;
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 60%, #0F3460 100%);
+  z-index: 199;
+  padding: 10px 16px 6px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+}
+.dday-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 8px;
+}
+.dday-left, .dday-right {
+  flex: 1;
+  text-align: center;
+}
+.dday-divider {
+  width: 1px;
+  height: 34px;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+.dday-label {
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  margin-bottom: 2px;
+  letter-spacing: 0.03em;
+}
+.dday-week {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 1.15rem;
+  color: #F9A8D4;
+  font-weight: 700;
+  line-height: 1;
+}
+.dday-count {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 1.15rem;
+  color: #FDE68A;
+  font-weight: 700;
+  line-height: 1;
+}
+.dday-date {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.8);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.dday-bar-wrap {
+  background: rgba(255,255,255,0.12);
+  border-radius: 99px;
+  height: 4px;
+  overflow: hidden;
+  margin-bottom: 3px;
+}
+.dday-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #F9A8D4, #FDE68A);
+  transition: width 0.8s ease;
+}
+.dday-bar-label {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.4);
+  text-align: right;
+}
+
+/* ── HEADER ── */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: linear-gradient(135deg, #F9A8D4 0%, #F472B6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 200;
+  box-shadow: 0 2px 12px rgba(244,114,182,0.3);
+}
+.header-title {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 1.15rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.fb-pill {
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.3);
+  color: white;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.fb-pill.ok { background: rgba(52,211,153,0.5); }
+
+/* ── BOTTOM NAV ── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: calc(var(--nav-h) + var(--safe-bottom));
+  background: white;
+  border-top: 1px solid #FCE7F3;
+  display: flex;
+  z-index: 200;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-bottom: var(--safe-bottom);
+  color: #D1D5DB;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.nav-item.active { color: var(--pink-deep); }
+.nav-item .nav-icon { font-size: 1.4rem; transition: transform 0.2s; }
+.nav-item.active .nav-icon { transform: scale(1.2); }
+.nav-item .nav-label { font-size: 0.65rem; font-weight: 600; }
+
+/* ── MAIN SCROLL AREA ── */
+.main {
+  padding-top: calc(var(--header-h) + var(--dday-h) + 12px);
+  padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 16px);
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 100vh;
+}
+
+/* ── PAGE ── */
+.page { display: none; }
+.page.active { display: block; animation: fadeUp 0.25s ease; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── DASHBOARD ── */
+.dash-progress-card {
+  background: linear-gradient(135deg, #F472B6, #DB2777);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 14px;
+}
+.dash-progress-card .big-pct {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 3rem;
+  line-height: 1;
+}
+.dash-progress-card .sub { font-size: 0.8rem; opacity: 0.85; margin-bottom: 12px; }
+.prog-track {
+  background: rgba(255,255,255,0.3);
+  border-radius: 99px;
+  height: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.prog-fill {
+  height: 100%;
+  background: white;
+  border-radius: 99px;
+  transition: width 0.8s cubic-bezier(.34,1.56,.64,1);
+}
+.prog-caption { font-size: 0.75rem; opacity: 0.8; text-align: right; }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 10px;
+  text-align: center;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.stat-card .s-val { font-size: 1.5rem; font-weight: 700; line-height: 1; margin-bottom: 3px; }
+.stat-card .s-lbl { font-size: 0.65rem; color: var(--muted); }
+
+.section-title {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 16px 0 10px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cat-dash-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.cat-dash-item {
+  background: white;
+  border-radius: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cat-dash-item .cd-icon { font-size: 1.2rem; flex-shrink: 0; }
+.cat-dash-item .cd-info { flex: 1; min-width: 0; }
+.cat-dash-item .cd-name { font-size: 0.82rem; font-weight: 600; margin-bottom: 5px; }
+.cd-bar-wrap { background: #F3F4F6; border-radius: 99px; height: 6px; overflow: hidden; }
+.cd-bar-fill { height: 100%; border-radius: 99px; transition: width 0.6s ease; }
+.cat-dash-item .cd-count { font-size: 0.75rem; color: var(--muted); flex-shrink: 0; }
+
+.budget-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.budget-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #F9F0F5;
+  font-size: 0.83rem;
+}
+.budget-row:last-child { border: none; font-weight: 700; }
+.budget-row .b-val { color: var(--pink-deep); font-weight: 600; }
+
+/* ── TODO LIST PAGE ── */
+.cat-filter-wrap {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 0 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: 4px;
+}
+.cat-filter-wrap::-webkit-scrollbar { display: none; }
+.cf-btn {
+  padding: 7px 14px;
+  border-radius: 99px;
+  border: 1.5px solid var(--border);
+  background: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Noto Sans KR', sans-serif;
+  touch-action: manipulation;
+  transition: all 0.2s;
+}
+.cf-btn.on {
+  background: var(--pink-deep);
+  color: white;
+  border-color: var(--pink-deep);
+}
+
+.add-fab {
+  position: fixed;
+  right: 18px;
+  bottom: calc(var(--nav-h) + var(--safe-bottom) + 18px);
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, #F472B6, #DB2777);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(219,39,119,0.45);
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  transition: transform 0.15s;
+}
+.add-fab:active { transform: scale(0.9); }
+
+/* ITEM LIST */
+.items-list { display: flex; flex-direction: column; gap: 0; }
+.cat-section { margin-bottom: 16px; }
+.cat-section-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.cat-section-head .cs-icon { font-size: 1.1rem; }
+.cat-section-head .cs-name { font-size: 0.9rem; font-weight: 700; flex: 1; }
+.cat-section-head .cs-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: var(--pink-light);
+  color: var(--pink-deep);
+  font-weight: 700;
+}
+.cat-section-head .cs-arrow { font-size: 0.75rem; color: var(--muted); transition: transform 0.2s; }
+.cat-section-head.collapsed .cs-arrow { transform: rotate(-90deg); }
+
+.item-card {
+  background: white;
+  border-radius: 14px;
+  padding: 13px 14px;
+  margin-bottom: 6px;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  touch-action: manipulation;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.item-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--pink);
+  border-radius: 3px 0 0 3px;
+  transition: background 0.2s;
+}
+.item-card.done { background: #F0FFF7; border-color: #A7F3D0; }
+.item-card.done::before { background: var(--mint); }
+
+.item-chk {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: white;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1px;
+}
+.item-card.done .item-chk {
+  background: var(--mint);
+  border-color: var(--mint);
+  color: white;
+  font-size: 0.75rem;
+}
+
+.item-body { flex: 1; min-width: 0; }
+.item-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  transition: all 0.2s;
+}
+.item-card.done .item-name { text-decoration: line-through; color: var(--muted); }
+
+.item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+.tag {
+  font-size: 0.67rem;
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tag-before { background: #FEF3C7; color: #92400E; }
+.tag-after  { background: #DBEAFE; color: #1E40AF; }
+.tag-buy    { background: #D1FAE5; color: #065F46; }
+.tag-rent   { background: #E0E7FF; color: #3730A3; }
+.tag-carrot { background: #FEE2E2; color: #991B1B; }
+
+.item-note {
+  font-size: 0.73rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-price-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+/* 가격 표시 (읽기 모드) */
+.price-display {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--pink-deep);
+  text-align: right;
+  min-width: 72px;
+  padding: 4px 8px;
+  background: #FFF0F8;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.price-display.empty { color: var(--muted); font-weight: 400; font-size: 0.75rem; }
+
+/* 가격 입력 (편집 모드) */
+.price-inp {
+  width: 90px;
+  text-align: right;
+  border: 1.5px solid var(--pink);
+  border-radius: 8px;
+  padding: 4px 7px;
+  font-size: 0.82rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--pink-deep);
+  background: white;
+  outline: none;
+  display: none;
+  box-shadow: 0 0 0 3px rgba(244,114,182,0.15);
+}
+
+.item-action-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.btn-edit-item {
+  background: none;
+  border: none;
+  color: #D1D5DB;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 3px 5px;
+  line-height: 1;
+  touch-action: manipulation;
+  border-radius: 6px;
+}
+.btn-edit-item:active { color: var(--pink-deep); background: var(--pink-light); }
+.btn-del-item {
+  background: none;
+  border: none;
+  color: #D1D5DB;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 3px 5px;
+  line-height: 1;
+  touch-action: manipulation;
+  border-radius: 6px;
+}
+.btn-del-item:active { color: #EF4444; background: #FEE2E2; }
+
+/* 인라인 편집 시트 */
+.edit-sheet {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: white;
+  border-radius: 24px 24px 0 0;
+  padding: 20px 16px calc(20px + var(--safe-bottom));
+  z-index: 302;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(.32,2,.55,1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.edit-sheet.open { transform: translateY(0); }
+.edit-done-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #34D399, #059669);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  margin-top: 6px;
+  touch-action: manipulation;
+}
+.edit-done-btn:active { opacity: 0.85; }
+.edit-del-btn {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  color: #EF4444;
+  border: 1.5px solid #FCA5A5;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  margin-top: 8px;
+  touch-action: manipulation;
+}
+.edit-del-btn:active { background: #FEE2E2; }
+
+/* EMPTY */
+.empty-msg {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ── ADD SHEET (bottom drawer) ── */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.sheet-overlay.open { opacity: 1; pointer-events: all; }
+
+.add-sheet {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: white;
+  border-radius: 24px 24px 0 0;
+  padding: 20px 16px calc(20px + var(--safe-bottom));
+  z-index: 301;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(.32,2,.55,1);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.add-sheet.open { transform: translateY(0); }
+
+.sheet-handle { width: 36px; height: 4px; background: #E5E7EB; border-radius: 99px; margin: 0 auto 16px; }
+.sheet-title { font-family: 'Gowun Dodum', serif; font-size: 1.1rem; margin-bottom: 16px; color: var(--pink-deep); }
+
+.form-group { margin-bottom: 13px; }
+.form-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; margin-bottom: 5px; display: block; }
+.form-inp, .form-sel {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text);
+  background: white;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border 0.2s;
+}
+.form-inp:focus, .form-sel:focus { border-color: var(--pink); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #F472B6, #DB2777);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  margin-top: 6px;
+  touch-action: manipulation;
+  active-color: #BE185D;
+}
+.btn-submit:active { opacity: 0.85; }
+
+/* ── SETTINGS PAGE ── */
+.settings-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 12px;
+  border-bottom: 1px solid #FFF0F5;
+  font-size: 0.88rem;
+}
+.settings-row:last-child { border: none; }
+.settings-row .sr-icon { font-size: 1.3rem; }
+.settings-row .sr-text { flex: 1; }
+.settings-row .sr-sub { font-size: 0.72rem; color: var(--muted); }
+
+.toggle {
+  width: 46px; height: 26px;
+  background: #E5E7EB;
+  border-radius: 13px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0;
+  border: none;
+}
+.toggle::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 3px; left: 3px;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.toggle.on { background: var(--mint); }
+.toggle.on::after { transform: translateX(20px); }
+
+.firebase-setup {
+  background: linear-gradient(135deg, #FFF5F7, #FEE2F8);
+  border-radius: 16px;
+  padding: 18px;
+  border: 1.5px dashed var(--pink);
+  margin-bottom: 14px;
+}
+.firebase-setup h3 { font-size: 0.9rem; color: var(--pink-deep); margin-bottom: 10px; }
+.firebase-setup p { font-size: 0.78rem; color: #6B7280; line-height: 1.6; }
+.firebase-setup code {
+  display: inline-block;
+  background: #F3F4F6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: var(--pink-deep);
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: calc(var(--nav-h) + var(--safe-bottom) + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #1F2937;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.83rem;
+  z-index: 400;
+  opacity: 0;
+  transition: all 0.3s;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* LOADING SPLASH */
+#splash {
+  position: fixed; inset: 0;
+  background: linear-gradient(160deg, #FDF2F8, #FFF5F7);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 999;
+  transition: opacity 0.4s;
+}
+#splash .sp-emoji { font-size: 3.5rem; margin-bottom: 10px; animation: bounce 1s infinite; }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+#splash .sp-text { font-family: 'Gowun Dodum', serif; font-size: 1.1rem; color: var(--pink-deep); }
+
+/* ── SETTINGS EXTRAS ── */
+.set-section-title {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  padding: 14px 4px 6px;
+  text-transform: uppercase;
+}
+.set-btn-primary {
+  padding: 9px 16px;
+  background: linear-gradient(135deg, #F472B6, #DB2777);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+.set-btn-primary:active { opacity: 0.8; }
+.set-btn-ghost {
+  padding: 9px 14px;
+  background: white;
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+.set-btn-ghost:active { background: #F9F0F5; }
+
+.dday-preview {
+  background: linear-gradient(135deg, #1A1A2E, #0F3460);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: white;
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+/* EMOJI PICKER */
+.emoji-picker-wrap { position: relative; }
+.emoji-btn {
+  width: 42px; height: 42px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  touch-action: manipulation;
+}
+.emoji-picker {
+  position: absolute;
+  top: 48px; left: 0;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  z-index: 500;
+  display: none;
+  width: 220px;
+}
+.emoji-picker.open { display: block; }
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 4px;
+}
+.emoji-grid button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 6px;
+  touch-action: manipulation;
+}
+.emoji-grid button:hover { background: #FFF0F8; }
+
+/* CATEGORY MANAGE LIST */
+.cat-manage-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-top: 1px solid #FFF0F5;
+  font-size: 0.85rem;
+}
+.cat-manage-item .cm-icon { font-size: 1.1rem; flex-shrink: 0; }
+.cat-manage-item .cm-name { flex: 1; }
+.cat-manage-item .cm-count { font-size: 0.72rem; color: var(--muted); }
+.cat-manage-item .cm-del {
+  background: none;
+  border: none;
+  color: #D1D5DB;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  touch-action: manipulation;
+}
+.cat-manage-item .cm-del:active { color: #EF4444; background: #FEE2E2; }
+.cat-manage-item.builtin .cm-del { visibility: hidden; }
+
+/* ── COUPLE CODE SCREEN ── */
+#couple-screen {
+  position: fixed; inset: 0;
+  background: linear-gradient(160deg, #FDF2F8 0%, #FFF5F7 50%, #EEF2FF 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 998;
+  padding: 24px;
+  transition: opacity 0.4s;
+}
+.cs-logo { font-size: 3.2rem; margin-bottom: 6px; }
+.cs-title {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 1.4rem;
+  color: var(--pink-deep);
+  margin-bottom: 4px;
+  text-align: center;
+}
+.cs-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+  text-align: center;
+}
+.cs-card {
+  background: white;
+  border-radius: 20px;
+  padding: 22px 20px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 8px 32px rgba(244,114,182,0.12);
+  border: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.cs-card-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.cs-new-code {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 2rem;
+  letter-spacing: 0.18em;
+  color: var(--pink-deep);
+  text-align: center;
+  background: var(--pink-light);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  user-select: all;
+}
+.cs-new-code-hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.cs-btn-full {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #F472B6, #DB2777);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.cs-btn-full:active { opacity: 0.85; }
+.cs-btn-full.secondary {
+  background: white;
+  color: var(--pink-deep);
+  border: 1.5px solid var(--pink);
+  margin-top: 8px;
+}
+.cs-divider {
+  display: flex; align-items: center; gap: 10px;
+  margin: 6px 0 12px;
+  font-size: 0.75rem; color: var(--muted);
+}
+.cs-divider::before, .cs-divider::after {
+  content:''; flex:1; height:1px; background: var(--border);
+}
+.cs-join-inp {
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0.15em;
+  font-size: 1.4rem;
+  font-family: 'Gowun Dodum', serif;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  outline: none;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.cs-join-inp:focus { border-color: var(--pink); }
+.cs-join-inp::placeholder { color: #D1D5DB; font-size: 1rem; letter-spacing: 0.05em; }
+
+/* 설정 탭의 커플코드 현황 */
+.couple-info-card {
+  background: linear-gradient(135deg, #1A1A2E, #16213E);
+  border-radius: 16px;
+  padding: 16px;
+  color: white;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.couple-info-card .ci-icon { font-size: 2rem; flex-shrink: 0; }
+.couple-info-card .ci-code {
+  font-family: 'Gowun Dodum', serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  color: #F9A8D4;
+  line-height: 1;
+}
+.couple-info-card .ci-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 3px; }
+.couple-info-card .ci-copy {
+  margin-left: auto;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 7px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+.couple-info-card .ci-copy:active { background: rgba(255,255,255,0.25); }
+
+/* HOW-TO STEPS */
+.how-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid #FFF0F5;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.how-num {
+  width: 24px; height: 24px;
+  background: linear-gradient(135deg, #F472B6, #DB2777);
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.how-text { flex: 1; }
+
+/* ── 광고 배너 슬롯 ── */
+.ad-banner-wrap {
+  position: fixed;
+  bottom: calc(var(--nav-h) + var(--safe-bottom));
+  left: 0; right: 0;
+  z-index: 190;
+  background: white;
+  border-top: 1px solid #F0F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: height 0.2s ease;
+  min-height: 50px;
+}
+/* 광고 있을 때 main 하단 여백 */
+body.has-ad .main {
+  padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 64px + 16px);
+}
+/* 쿠팡 배너 (체크리스트·설정) */
+.ad-slot { display: none; width: 100%; }
+.ad-slot.active { display: flex; align-items: center; justify-content: center; }
+
+/* 쿠팡 배너 플레이스홀더 스타일 */
+.cp-banner-ph {
+  width: 100%;
+  height: 64px;
+  background: linear-gradient(135deg, #FEEB00 0%, #FFD400 100%);
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.cp-banner-ph .cp-b-logo {
+  font-size: 1.4rem;
+}
+.cp-banner-ph .cp-b-text {
+  display: flex; flex-direction: column;
+}
+.cp-banner-ph .cp-b-main {
+  font-size: 0.82rem; font-weight: 800; color: #111; line-height: 1.2;
+}
+.cp-banner-ph .cp-b-sub {
+  font-size: 0.65rem; color: #555; line-height: 1.2;
+}
+.cp-banner-ph .cp-b-arrow {
+  font-size: 1rem; color: #333; margin-left: 4px;
+}
+/* 일반 광고 플레이스홀더 */
+.general-banner-ph {
+  width: 320px; height: 50px;
+  background: #F9F0F8; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; font-size: 0.72rem; color: #D1D5DB;
+}
+
+/* UTIL */
+.mt12 { margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<!-- COUPLE CODE SCREEN -->
+<div id="couple-screen" style="display:none">
+  <div class="cs-logo">👫</div>
+  <div class="cs-title">아기맞이 준비물</div>
+  <div class="cs-sub">커플코드로 배우자와 함께 준비해요 💕</div>
+
+  <!-- 새 코드 생성 -->
+  <div class="cs-card">
+    <div class="cs-card-title">✨ 우리 커플코드 만들기</div>
+    <div class="cs-new-code" id="cs-code-preview" onclick="copyNewCode()">——————</div>
+    <div class="cs-new-code-hint">탭하면 복사 · 배우자에게 공유하세요</div>
+    <button class="cs-btn-full" onclick="startWithNewCode()">🎀 이 코드로 시작하기</button>
+    <button class="cs-btn-full secondary" onclick="regenCode()">🔄 다른 코드 생성</button>
+  </div>
+
+  <!-- 코드 입력해서 참여 -->
+  <div class="cs-card">
+    <div class="cs-card-title">💌 배우자 코드 입력해서 참여</div>
+    <input class="cs-join-inp" id="cs-join-inp" maxlength="6"
+      placeholder="코드 6자리 입력"
+      oninput="this.value=this.value.toUpperCase()"
+      onkeydown="if(event.key==='Enter') joinWithCode()" />
+    <button class="cs-btn-full" onclick="joinWithCode()">🔗 연동하기</button>
+  </div>
+</div>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="sp-emoji">🍼</div>
+  <div class="sp-text">아기맞이 준비중...</div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-title">🍼 아기맞이 준비물</div>
+</div>
+
+<!-- D-DAY BANNER (헤더 바로 아래) -->
+<div class="dday-banner" id="dday-banner" style="display:none">
+  <div class="dday-inner">
+    <div class="dday-left">
+      <div class="dday-label">🤰 임신 주차</div>
+      <div class="dday-week" id="dday-week">—</div>
+    </div>
+    <div class="dday-divider"></div>
+    <div class="dday-right">
+      <div class="dday-label" id="dday-direction">출산까지</div>
+      <div class="dday-count" id="dday-count">D-—</div>
+    </div>
+    <div class="dday-divider"></div>
+    <div class="dday-right">
+      <div class="dday-label">예정일</div>
+      <div class="dday-date" id="dday-date">—</div>
+    </div>
+  </div>
+  <div class="dday-bar-wrap">
+    <div class="dday-bar-fill" id="dday-bar-fill" style="width:0%"></div>
+  </div>
+  <div class="dday-bar-label" id="dday-bar-label"></div>
+</div>
+
+<!-- PAGES -->
+<div class="main">
+  <!-- DASHBOARD -->
+  <div class="page active" id="page-dash">
+    <div class="dash-progress-card">
+      <div class="big-pct" id="d-pct">0%</div>
+      <div class="sub">전체 준비 완료율</div>
+      <div class="prog-track"><div class="prog-fill" id="d-prog" style="width:0%"></div></div>
+      <div class="prog-caption" id="d-cap">0 / 0 항목</div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="s-val" id="d-total" style="color:#F472B6">0</div>
+        <div class="s-lbl">전체</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val" id="d-done" style="color:#34D399">0</div>
+        <div class="s-lbl">완료 ✅</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val" id="d-todo" style="color:#FBBF24">0</div>
+        <div class="s-lbl">준비중 ⏳</div>
+      </div>
+    </div>
+
+    <div class="section-title">📊 카테고리별 진행</div>
+    <div class="cat-dash-list" id="cat-dash-list"></div>
+
+    <div class="section-title">💰 예산 현황</div>
+    <div class="budget-card" id="budget-card"></div>
+
+    <div class="section-title">📅 출산 전/후 현황</div>
+    <div class="stat-row mt12">
+      <div class="stat-card" style="grid-column:span 1">
+        <div class="s-val" id="d-before" style="color:#F59E0B">0</div>
+        <div class="s-lbl">출산전</div>
+      </div>
+      <div class="stat-card" style="grid-column:span 1">
+        <div class="s-val" id="d-after" style="color:#60A5FA">0</div>
+        <div class="s-lbl">출산후</div>
+      </div>
+      <div class="stat-card" style="grid-column:span 1">
+        <div class="s-val" id="d-total2" style="color:#A78BFA">0</div>
+        <div class="s-lbl">합계</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="page" id="page-list">
+    <div class="cat-filter-wrap" id="cat-filter-wrap">
+      <button class="cf-btn on" data-cat="all" onclick="setCatFilter('all',this)">전체</button>
+    </div>
+    <div class="items-list" id="items-list"></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="page" id="page-settings">
+
+    <!-- 커플 연동 방법 안내 -->
+    <div class="set-section-title">👫 커플 연동</div>
+    <div class="couple-info-card" id="couple-info-card">
+      <div class="ci-icon">💕</div>
+      <div>
+        <div class="ci-label">현재 커플코드</div>
+        <div class="ci-code" id="settings-couple-code">——</div>
+      </div>
+      <button class="ci-copy" onclick="shareCoupleCode()">공유 📤</button>
+    </div>
+
+    <!-- 연동 방법 안내 카드 -->
+    <div class="settings-card" style="margin-bottom:14px">
+      <div class="settings-row" style="flex-direction:column;align-items:stretch;gap:0;padding-bottom:0">
+        <div style="font-size:0.85rem;font-weight:700;color:var(--text);padding-bottom:12px">📖 배우자 연동 방법</div>
+
+        <div class="how-step">
+          <div class="how-num">1</div>
+          <div class="how-text">
+            <b>내 커플코드 확인</b><br>
+            위 핑크 카드에 표시된 코드가 내 커플코드예요
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          <div class="how-text">
+            <b>배우자에게 코드 공유</b><br>
+            <span style="color:var(--pink-deep);font-weight:600">공유 📤</span> 버튼을 눌러 카카오톡으로 전송하세요
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          <div class="how-text">
+            <b>배우자가 앱 접속 후 코드 입력</b><br>
+            앱을 처음 열면 코드 입력 화면이 나와요<br>
+            받은 코드 6자리를 입력하면 연동 완료!
+          </div>
+        </div>
+        <div class="how-step" style="border:none;padding-bottom:4px">
+          <div class="how-num">✓</div>
+          <div class="how-text">
+            <b>이제 실시간으로 함께 체크해요 🎉</b><br>
+            한 명이 체크하면 상대방 화면에도 바로 반영됩니다
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-card" style="margin-bottom:14px">
+      <div class="settings-row" onclick="changeCouple()" style="cursor:pointer">
+        <span class="sr-icon">🔄</span>
+        <div class="sr-text">
+          <div>다른 커플코드로 변경</div>
+          <div class="sr-sub">코드를 잘못 입력했거나 새로 시작할 때</div>
+        </div>
+        <span style="color:#9CA3AF;font-size:0.9rem">›</span>
+      </div>
+    </div>
+    <div class="set-section-title">📅 출산 예정일 설정</div>
+    <div class="settings-card">
+      <div class="settings-row" style="flex-direction:column;align-items:stretch;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="sr-icon">🤰</span>
+          <div class="sr-text">
+            <div style="font-weight:600">출산 예정일</div>
+            <div class="sr-sub">설정하면 상단에 D-day와 임신주차가 표시됩니다</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="date" class="form-inp" id="dday-input" style="flex:1;padding:10px 12px;font-size:0.9rem" />
+          <button class="set-btn-primary" onclick="saveDday()">저장</button>
+          <button class="set-btn-ghost" onclick="clearDday()">초기화</button>
+        </div>
+        <div class="dday-preview" id="dday-preview" style="display:none">
+          <div id="dday-preview-text"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 카테고리 관리 -->
+    <div class="set-section-title">🗂 카테고리 관리</div>
+    <div class="settings-card">
+      <!-- 카테고리 추가 -->
+      <div class="settings-row" style="flex-direction:column;align-items:stretch;gap:10px;border-bottom:1px solid #FFF0F5">
+        <div style="font-size:0.82rem;font-weight:600;color:var(--text)">새 카테고리 추가</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div class="emoji-picker-wrap">
+            <button class="emoji-btn" id="cat-emoji-btn" onclick="toggleEmojiPicker()">📦</button>
+            <div class="emoji-picker" id="emoji-picker">
+              <div class="emoji-grid" id="emoji-grid"></div>
+            </div>
+          </div>
+          <input class="form-inp" id="new-cat-name" placeholder="카테고리명" style="flex:1;padding:10px 12px" />
+          <button class="set-btn-primary" onclick="addCategory()">추가</button>
+        </div>
+      </div>
+      <!-- 카테고리 목록 -->
+      <div id="cat-manage-list"></div>
+    </div>
+
+    <!-- 앱 정보 -->
+    <div class="set-section-title">📊 앱 현황</div>
+    <div class="settings-card">
+      <div class="settings-row">
+        <span class="sr-icon">📋</span>
+        <div class="sr-text">
+          <div>전체 항목</div>
+          <div class="sr-sub" id="total-count-text">-</div>
+        </div>
+      </div>
+      <div class="settings-row" style="border:none">
+        <span class="sr-icon">✅</span>
+        <div class="sr-text">
+          <div>완료 항목</div>
+          <div class="sr-sub" id="done-count-text">-</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 초기화 -->
+    <div class="settings-card" style="margin-bottom:30px">
+      <div class="settings-row" onclick="resetConfirm()" style="cursor:pointer">
+        <span class="sr-icon">🔄</span>
+        <div class="sr-text">
+          <div>기본 데이터로 초기화</div>
+          <div class="sr-sub">엑셀 원본 항목으로 되돌리기</div>
+        </div>
+        <span style="color:#9CA3AF;font-size:0.9rem">›</span>
+      </div>
+      <div class="settings-row" style="cursor:pointer;border:none" onclick="confirmDeleteDone()">
+        <span class="sr-icon">🗑</span>
+        <div class="sr-text">
+          <div>완료 항목 전체 삭제</div>
+          <div class="sr-sub">체크된 항목만 삭제합니다</div>
+        </div>
+        <span style="color:#9CA3AF;font-size:0.9rem">›</span>
+      </div>
+    </div>
+
+    <div style="text-align:center;font-size:0.72rem;color:var(--muted);padding-bottom:10px">v2.0 · 아기맞이 준비물 관리앱 🍼</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     💰 광고 배너 영역  (페이지별 자동 전환)
+     ─────────────────────────────────────────────────────
+     [슬롯 1] 대시보드 → 일반 광고 (애드핏/애드센스)
+     [슬롯 2] 체크리스트·설정 → 쿠팡 파트너스 배너
+     ─────────────────────────────────────────────────────
+     ✅ 연동 방법은 파일 맨 아래 주석 가이드 참고
+     ════════════════════════════════════════════════════ -->
+<div class="ad-banner-wrap" id="ad-banner-wrap">
+
+  <!-- ── 슬롯 1: 대시보드 쿠팡 배너 ── -->
+  <div class="ad-slot" id="ad-slot-general">
+    <!-- ✅ 쿠팡 파트너스 배너 (AF4632663) -->
+    <a class="cp-banner-ph"
+       href="https://link.coupang.com/a/ebbFnU"
+       target="_blank"
+       rel="noopener sponsored"
+       onclick="trackCoupangClick()">
+      <span class="cp-b-logo">🛒</span>
+      <div class="cp-b-text">
+        <span class="cp-b-main">쿠팡에서 신생아 용품 최저가 확인</span>
+        <span class="cp-b-sub">쿠팡 파트너스 활동으로 수수료를 받을 수 있습니다</span>
+      </div>
+      <span class="cp-b-arrow">›</span>
+    </a>
+  </div>
+
+  <!-- ── 슬롯 2: 체크리스트·설정 쿠팡 배너 ── -->
+  <div class="ad-slot" id="ad-slot-coupang">
+    <!-- ✅ 쿠팡 파트너스 배너 (AF4632663) -->
+    <a class="cp-banner-ph"
+       href="https://link.coupang.com/a/ebbFnU"
+       target="_blank"
+       rel="noopener sponsored"
+       onclick="trackCoupangClick()">
+      <span class="cp-b-logo">🛒</span>
+      <div class="cp-b-text">
+        <span class="cp-b-main">쿠팡에서 신생아 용품 최저가 확인</span>
+        <span class="cp-b-sub">쿠팡 파트너스 활동으로 수수료를 받을 수 있습니다</span>
+      </div>
+      <span class="cp-b-arrow">›</span>
+    </a>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-item active" id="nav-dash" onclick="goPage('dash')">
+    <span class="nav-icon">📊</span>
+    <span class="nav-label">대시보드</span>
+  </button>
+  <button class="nav-item" id="nav-list" onclick="goPage('list')">
+    <span class="nav-icon">📋</span>
+    <span class="nav-label">체크리스트</span>
+  </button>
+  <button class="nav-item" id="nav-settings" onclick="goPage('settings')">
+    <span class="nav-icon">⚙️</span>
+    <span class="nav-label">설정</span>
+  </button>
+</nav>
+
+<!-- FAB -->
+<button class="add-fab" id="fab" onclick="openAddSheet()" style="display:none">＋</button>
+
+<!-- ADD SHEET -->
+<div class="sheet-overlay" id="sheet-overlay" onclick="closeAddSheet();closeEditSheet()"></div>
+<div class="add-sheet" id="add-sheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-title">✏️ 항목 추가</div>
+  <div class="form-group">
+    <label class="form-label">품목명 *</label>
+    <input class="form-inp" id="f-name" placeholder="예: 아기 체온계" />
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">카테고리</label>
+      <select class="form-sel" id="f-cat">
+        <option value="의류/손수건">👕 의류/손수건</option>
+        <option value="수유용품">🍼 수유용품</option>
+        <option value="배변용품">🧷 배변용품</option>
+        <option value="수면용품">🛏 수면용품</option>
+        <option value="목욕용품">🛁 목욕용품</option>
+        <option value="외출/이동용품">🚗 외출/이동용품</option>
+        <option value="생활/가전용품">🏠 생활/가전용품</option>
+        <option value="세탁용품">🧺 세탁용품</option>
+        <option value="약국/위생용품">💊 약국/위생용품</option>
+        <option value="놀이용품">🧸 놀이용품</option>
+        <option value="해야할일">📌 해야할일</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">가격 (원)</label>
+      <input class="form-inp" id="f-price" type="number" placeholder="0" inputmode="numeric" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">시기</label>
+      <select class="form-sel" id="f-timing">
+        <option value="출산전">출산전</option>
+        <option value="출산후">출산후</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">구매방법</label>
+      <select class="form-sel" id="f-method">
+        <option value="구매">구매</option>
+        <option value="대여">대여</option>
+        <option value="당근">🥕당근</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">메모</label>
+    <input class="form-inp" id="f-note" placeholder="자유롭게 입력하세요" />
+  </div>
+  <button class="btn-submit" onclick="submitAdd()">추가하기 🍀</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- EDIT SHEET -->
+<div class="edit-sheet" id="edit-sheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-title">✏️ 항목 수정</div>
+  <input type="hidden" id="e-id">
+  <div class="form-group">
+    <label class="form-label">품목명</label>
+    <input class="form-inp" id="e-name" placeholder="품목명" />
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">카테고리</label>
+      <select class="form-sel" id="e-cat">
+        <option value="의류/손수건">👕 의류/손수건</option>
+        <option value="수유용품">🍼 수유용품</option>
+        <option value="배변용품">🧷 배변용품</option>
+        <option value="수면용품">🛏 수면용품</option>
+        <option value="목욕용품">🛁 목욕용품</option>
+        <option value="외출/이동용품">🚗 외출/이동용품</option>
+        <option value="생활/가전용품">🏠 생활/가전용품</option>
+        <option value="세탁용품">🧺 세탁용품</option>
+        <option value="약국/위생용품">💊 약국/위생용품</option>
+        <option value="놀이용품">🧸 놀이용품</option>
+        <option value="해야할일">📌 해야할일</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">가격 (원)</label>
+      <input class="form-inp" id="e-price" type="number" placeholder="0" inputmode="numeric" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">시기</label>
+      <select class="form-sel" id="e-timing">
+        <option value="출산전">출산전</option>
+        <option value="출산후">출산후</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">구매방법</label>
+      <select class="form-sel" id="e-method">
+        <option value="구매">구매</option>
+        <option value="대여">대여</option>
+        <option value="당근">🥕당근</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">메모</label>
+    <input class="form-inp" id="e-note" placeholder="자유롭게 입력하세요" />
+  </div>
+  <button class="edit-done-btn" onclick="submitEdit()">저장하기 ✅</button>
+  <button class="edit-del-btn" onclick="deleteFromEdit()">🗑 이 항목 삭제</button>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// DATA - 실제 엑셀 파일 기반
+// ═══════════════════════════════════════
+const DEFAULT_DATA = [
+  // 의류/손수건
+  {id:'c01',cat:'의류/손수건',name:'바디수트 4벌',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'c02',cat:'의류/손수건',name:'우주복 5벌',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'c03',cat:'의류/손수건',name:'속싸개 1개',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'c04',cat:'의류/손수건',name:'배냇저고리 1개',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'c05',cat:'의류/손수건',name:'손싸개 2개',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'c06',cat:'의류/손수건',name:'45 (신생아용품)',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'c07',cat:'의류/손수건',name:'아기모자 1개',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'c08',cat:'의류/손수건',name:'손수건 엠보 20장',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'c09',cat:'의류/손수건',name:'손수건 거즈 40장',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  // 세탁용품
+  {id:'w01',cat:'세탁용품',name:'의류용 세제',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'w02',cat:'세탁용품',name:'세탁비누',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'w03',cat:'세탁용품',name:'아기 세탁망',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'w04',cat:'세탁용품',name:'아기 빨래건조대',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  // 배변용품
+  {id:'b01',cat:'배변용품',name:'기저귀 2단계',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'b02',cat:'배변용품',name:'기저귀 갈이대',done:false,price:0,timing:'출산전',method:'당근',note:''},
+  {id:'b03',cat:'배변용품',name:'방수패드',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'b04',cat:'배변용품',name:'매직캔 쓰레기통',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  // 수유용품
+  {id:'n01',cat:'수유용품',name:'젖병 6개',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n02',cat:'수유용품',name:'젖꼭지 SS 6개',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n03',cat:'수유용품',name:'젖병세척기',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n04',cat:'수유용품',name:'유팡 (젖병소독기)',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n05',cat:'수유용품',name:'젖병세제',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n06',cat:'수유용품',name:'분유 1단계',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n07',cat:'수유용품',name:'분유포트',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n08',cat:'수유용품',name:'분유쉐이커',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n09',cat:'수유용품',name:'수유쿠션',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n10',cat:'수유용품',name:'젖병세척솔 집게세트',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n11',cat:'수유용품',name:'열탕소독용 냄비',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n12',cat:'수유용품',name:'보온병',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'n13',cat:'수유용품',name:'수유쿠션 (모유수유)',done:false,price:0,timing:'출산전',method:'구매',note:'*모유수유시'},
+  {id:'n14',cat:'수유용품',name:'가슴닦는 수유시트',done:false,price:0,timing:'출산전',method:'구매',note:'*모유수유시'},
+  {id:'n15',cat:'수유용품',name:'유두보호기',done:false,price:0,timing:'출산전',method:'구매',note:'*모유수유시'},
+  {id:'n16',cat:'수유용품',name:'휴대용 유축기',done:false,price:0,timing:'출산전',method:'대여',note:'*모유수유시'},
+  {id:'n17',cat:'수유용품',name:'수유복',done:false,price:0,timing:'출산전',method:'구매',note:'*모유수유시'},
+  {id:'n18',cat:'수유용품',name:'유두보호크림',done:false,price:0,timing:'출산전',method:'구매',note:'*모유수유시'},
+  // 생활/가전용품
+  {id:'g01',cat:'생활/가전용품',name:'홈캠',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'g02',cat:'생활/가전용품',name:'제습기',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'g03',cat:'생활/가전용품',name:'온습도계',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'g04',cat:'생활/가전용품',name:'가습기',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'g05',cat:'생활/가전용품',name:'트립트랩 + 뉴본세트',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'g06',cat:'생활/가전용품',name:'아기매트',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'g07',cat:'생활/가전용품',name:'트롤리',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  // 약국/위생용품
+  {id:'p01',cat:'약국/위생용품',name:'비타민D + 유산균',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'p02',cat:'약국/위생용품',name:'비판텐',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'p03',cat:'약국/위생용품',name:'발진크림',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'p04',cat:'약국/위생용품',name:'손소독제',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'p05',cat:'약국/위생용품',name:'소독티슈',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'p06',cat:'약국/위생용품',name:'아기물티슈',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  // 수면용품
+  {id:'s01',cat:'수면용품',name:'아기침대',done:false,price:0,timing:'출산전',method:'당근',note:''},
+  {id:'s02',cat:'수면용품',name:'침대패드',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'s03',cat:'수면용품',name:'방수커버',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'s04',cat:'수면용품',name:'아기용 담요',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'s05',cat:'수면용품',name:'백색소음기',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'s06',cat:'수면용품',name:'양막주머니 + 스와들',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'s07',cat:'수면용품',name:'쪽쪽이',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  // 외출/이동용품
+  {id:'o01',cat:'외출/이동용품',name:'유모차',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'o02',cat:'외출/이동용품',name:'카시트',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'o03',cat:'외출/이동용품',name:'아기띠 / 힙시트',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'o04',cat:'외출/이동용품',name:'기저귀가방',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  // 놀이용품
+  {id:'t01',cat:'놀이용품',name:'타이니모빌',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'t02',cat:'놀이용품',name:'아기체육관',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'t03',cat:'놀이용품',name:'꼬꼬맘',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'t04',cat:'놀이용품',name:'헝겊책',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'t05',cat:'놀이용품',name:'딸랑이',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'t06',cat:'놀이용품',name:'초점책',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'t07',cat:'놀이용품',name:'튤립 사운드북',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'t08',cat:'놀이용품',name:'아기동화',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'t09',cat:'놀이용품',name:'애착인형',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  // 목욕용품
+  {id:'ba01',cat:'목욕용품',name:'대야 2개',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'ba02',cat:'목욕용품',name:'아기샴푸 / 워시',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'ba03',cat:'목욕용품',name:'아기로션 / 오일',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'ba04',cat:'목욕용품',name:'아기면봉',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'ba05',cat:'목욕용품',name:'아기핀셋',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'ba06',cat:'목욕용품',name:'손톱깎이',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'ba07',cat:'목욕용품',name:'코딱지용 식염수',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'ba08',cat:'목욕용품',name:'구강티슈',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'ba09',cat:'목욕용품',name:'욕조 클리너',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  // 약국용품 (2차)
+  {id:'pp01',cat:'약국/위생용품',name:'비판텐',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'pp02',cat:'약국/위생용품',name:'비타민D + 유산균',done:false,price:0,timing:'출산후',method:'구매',note:''},
+  {id:'pp03',cat:'약국/위생용품',name:'배꼽소독볼',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'pp04',cat:'약국/위생용품',name:'뺑코 / 노시부',done:false,price:0,timing:'출산전',method:'구매',note:'비강흡입기'},
+  // 해야할일
+  {id:'td01',cat:'해야할일',name:'에어컨 청소',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'td02',cat:'해야할일',name:'세탁기 청소',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'td03',cat:'해야할일',name:'유모차 청소',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'td04',cat:'해야할일',name:'카시트 청소',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'td05',cat:'해야할일',name:'아기용품 열탕소독',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'td06',cat:'해야할일',name:'아기옷 빨래',done:false,price:0,timing:'출산전',method:'구매',note:''},
+  {id:'td07',cat:'해야할일',name:'손수건 빨래',done:false,price:0,timing:'출산전',method:'구매',note:''},
+];
+
+const CAT_META = {
+  '의류/손수건':    {icon:'👕', color:'#F9A8D4'},
+  '수유용품':       {icon:'🍼', color:'#FBBF24'},
+  '배변용품':       {icon:'🧷', color:'#34D399'},
+  '수면용품':       {icon:'🛏', color:'#60A5FA'},
+  '목욕용품':       {icon:'🛁', color:'#A78BFA'},
+  '외출/이동용품':  {icon:'🚗', color:'#F472B6'},
+  '생활/가전용품':  {icon:'🏠', color:'#FB923C'},
+  '세탁용품':       {icon:'🧺', color:'#6EE7B7'},
+  '약국/위생용품':  {icon:'💊', color:'#FCA5A5'},
+  '놀이용품':       {icon:'🧸', color:'#C4B5FD'},
+  '해야할일':       {icon:'📌', color:'#FCD34D'},
+};
+
+// ═══════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════
+let items = [];
+let currentCatFilter = 'all';
+let saveTimer = null;
+let ddayDate   = null;
+let customCats = [];
+
+const BUILTIN_CATS = [
+  '의류/손수건','수유용품','배변용품','수면용품','목욕용품',
+  '외출/이동용품','생활/가전용품','세탁용품','약국/위생용품','놀이용품','해야할일'
+];
+const EMOJI_LIST = ['👶','🍼','🧸','👕','🛏','🛁','🚗','💊','🧷','🏠','🧺','📌',
+  '🌸','⭐','💝','🎀','🌈','🦋','🎁','📦','🍭','🌺','💫','🎵','🏥','🛒','🧴','🪄','🎪','🌙'];
+let selectedEmoji = '📦';
+
+function getAllCats() {
+  const custom = customCats.map(c => c.name);
+  return [...BUILTIN_CATS, ...custom.filter(n => !BUILTIN_CATS.includes(n))];
+}
+function getCatMeta(catName) {
+  const builtin = CAT_META[catName];
+  if (builtin) return builtin;
+  const custom = customCats.find(c => c.name === catName);
+  if (custom) return { icon: custom.icon, color: '#C4B5FD' };
+  return { icon: '📦', color: '#E5E7EB' };
+}
+function rtdbToArray(obj) {
+  if (!obj) return [];
+  return Object.entries(obj).map(([id, data]) => ({ id, ...data }));
+}
+function deepCopy(x) { return JSON.parse(JSON.stringify(x)); }
+
+// ═══════════════════════════════════════
+// 커플코드 관리
+// ═══════════════════════════════════════
+let COUPLE_CODE = null; // 예: "HONEY7"
+let ITEMS_PATH  = null; // couples/HONEY7/items
+let META_PATH   = null; // couples/HONEY7/meta
+
+const ADJECTIVES = ['HONEY','BABY','LOVE','STAR','MOON','ROSE','COZY','WARM','CUTE','DEAR',
+                    'LILY','BELL','JADE','MIMI','DODO','LULU','BEBE','KIKI','PINE','DAISY'];
+
+function genCode() {
+  const adj  = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)];
+  const num  = Math.floor(Math.random() * 900 + 100); // 100~999
+  return (adj + num).substring(0, 6).toUpperCase();
+}
+
+function setPaths(code) {
+  COUPLE_CODE = code;
+  ITEMS_PATH  = `couples/${code}/items`;
+  META_PATH   = `couples/${code}/meta`;
+}
+
+// 로컬스토리지에서 커플코드 불러오기
+function loadStoredCode() {
+  return localStorage.getItem('coupleCode') || null;
+}
+function saveStoredCode(code) {
+  localStorage.setItem('coupleCode', code);
+}
+
+// ═══════════════════════════════════════
+// 커플 화면 UI
+// ═══════════════════════════════════════
+let _pendingNewCode = '';
+
+function showCoupleScreen() {
+  _pendingNewCode = genCode();
+  document.getElementById('cs-code-preview').textContent = _pendingNewCode;
+  document.getElementById('couple-screen').style.display = 'flex';
+}
+function hideCoupleScreen() {
+  document.getElementById('couple-screen').style.display = 'none';
+}
+
+function regenCode() {
+  _pendingNewCode = genCode();
+  document.getElementById('cs-code-preview').textContent = _pendingNewCode;
+}
+
+function copyNewCode() {
+  navigator.clipboard.writeText(_pendingNewCode).catch(()=>{});
+  showToast('📋 코드 복사됨: ' + _pendingNewCode);
+}
+
+async function startWithNewCode() {
+  const code = _pendingNewCode;
+  saveStoredCode(code);
+  setPaths(code);
+  hideCoupleScreen();
+  await launchApp();
+}
+
+async function joinWithCode() {
+  const inp  = document.getElementById('cs-join-inp');
+  const code = inp.value.trim().toUpperCase();
+  if (code.length < 4) { showToast('코드를 입력해주세요 (4~6자리)'); return; }
+  saveStoredCode(code);
+  setPaths(code);
+  hideCoupleScreen();
+  await launchApp();
+}
+
+function changeCouple() {
+  if (!confirm('다른 커플코드로 변경할까요?\n현재 연동은 해제되지만 Firebase 데이터는 유지됩니다.')) return;
+  localStorage.removeItem('coupleCode');
+  // 리스너 정리
+  if (DB) {
+    try { DB.ref(ITEMS_PATH).off(); DB.ref(META_PATH).off(); } catch(e) {}
+  }
+  showCoupleScreen();
+}
+
+function shareCoupleCode() {
+  const code = COUPLE_CODE;
+  if (!code) return;
+  const text = `🍼 아기맞이 준비물 앱\n커플코드: ${code}\n\n배우자도 같은 코드를 입력하면\n함께 실시간으로 체크할 수 있어요! 💕\n\n앱 주소도 함께 보내주세요 😊`;
+  if (navigator.share) {
+    navigator.share({ title: '커플코드 공유', text }).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).catch(()=>{});
+    showToast('📋 클립보드에 복사됨!');
+  }
+}
+
+// ═══════════════════════════════════════
+// FIREBASE COMPAT SDK
+// ═══════════════════════════════════════
+let DB = null;
+
+async function initApp() {
+  // SDK 로딩 완료 대기
+  await new Promise(resolve => {
+    if (window._fbSdkReady) { resolve(); return; }
+    document.addEventListener('fbSdkReady', resolve, { once: true });
+    setTimeout(resolve, 5000);
+  });
+
+  DB = window._firebaseDB || null;
+
+  // 스플래시 숨기고 커플코드 화면 or 앱 진입
+  hideSplash();
+
+  const storedCode = loadStoredCode();
+  if (storedCode) {
+    // 저장된 코드 있으면 바로 앱 시작
+    setPaths(storedCode);
+    await launchApp();
+  } else {
+    // 코드 없으면 커플 화면 표시
+    showCoupleScreen();
+  }
+}
+
+// 실제 앱 초기화 (커플코드 확정 후 호출)
+async function launchApp() {
+  // 설정 탭 커플코드 표시
+  const codeEl = document.getElementById('settings-couple-code');
+  if (codeEl) codeEl.textContent = COUPLE_CODE;
+
+  if (DB) {
+    // fb-pill removed
+    // fb-pill removed
+    // fb-status removed
+
+    try {
+      await loadMeta();
+      await loadFromFirebase();
+
+      // 실시간 동기화
+      DB.ref(ITEMS_PATH).on('value', snap => {
+        items = rtdbToArray(snap.val());
+        renderAll();
+      });
+      DB.ref(META_PATH).on('value', snap => {
+        const val = snap.val() || {};
+        ddayDate   = val.ddayDate   || null;
+        customCats = val.customCats || [];
+        updateDdayBanner();
+        renderCatManageList();
+        refreshCatSelects();
+        const inp = document.getElementById('dday-input');
+        if (inp) inp.value = ddayDate || '';
+      });
+    } catch(e) {
+      console.warn('launchApp Firebase error:', e);
+      fallbackToLocal();
+    }
+  } else {
+    fallbackToLocal();
+  }
+
+  updateDdayBanner();
+  buildEmojiGrid();
+  document.getElementById('fab').style.display = 'flex';
+  document.body.classList.add('has-ad');
+  switchAdBanner('dash'); // 초기 진입: 대시보드 → 일반 광고
+}
+
+function fallbackToLocal() {
+  // fb-pill removed
+  // fb-status removed
+  try {
+    const savedMeta = localStorage.getItem('appMeta_' + COUPLE_CODE);
+    if (savedMeta) {
+      const meta = JSON.parse(savedMeta);
+      ddayDate   = meta.ddayDate   || null;
+      customCats = meta.customCats || [];
+    }
+  } catch(e) {}
+  try {
+    const saved = localStorage.getItem('babyItems_' + COUPLE_CODE);
+    items = saved ? JSON.parse(saved) : deepCopy(DEFAULT_DATA);
+  } catch(e) { items = deepCopy(DEFAULT_DATA); }
+  renderAll();
+}
+
+function hideSplash() {
+  const s = document.getElementById('splash');
+  if (!s) return;
+  s.style.transition = 'opacity 0.35s';
+  s.style.opacity = '0';
+  setTimeout(() => { s.style.display = 'none'; }, 400);
+}
+
+async function loadMeta() {
+  if (!DB) return;
+  try {
+    const snap = await DB.ref(META_PATH).once('value');
+    const val  = snap.val() || {};
+    ddayDate   = val.ddayDate   || null;
+    customCats = val.customCats || [];
+  } catch(e) { console.warn('loadMeta:', e); }
+}
+
+async function saveMeta() {
+  const payload = { ddayDate: ddayDate || null, customCats };
+  if (DB) {
+    await DB.ref(META_PATH).set(payload);
+  } else {
+    localStorage.setItem('appMeta_' + COUPLE_CODE, JSON.stringify(payload));
+  }
+}
+
+async function loadFromFirebase() {
+  try {
+    const snap = await DB.ref(ITEMS_PATH).once('value');
+    if (!snap.exists()) {
+      items = deepCopy(DEFAULT_DATA);
+      await bulkSave();
+    } else {
+      items = rtdbToArray(snap.val());
+    }
+  } catch(e) {
+    console.warn('loadFromFirebase:', e);
+    try { items = JSON.parse(localStorage.getItem('babyItems_' + COUPLE_CODE)) || deepCopy(DEFAULT_DATA); }
+    catch(e2) { items = deepCopy(DEFAULT_DATA); }
+  }
+  renderAll();
+}
+
+async function saveItem(item) {
+  if (DB) {
+    const { id, ...data } = item;
+    await DB.ref(`${ITEMS_PATH}/${id}`).set(data);
+  } else {
+    localStorage.setItem('babyItems_' + COUPLE_CODE, JSON.stringify(items));
+  }
+}
+
+async function removeItem(id) {
+  items = items.filter(i => i.id !== id);
+  if (DB) {
+    await DB.ref(`${ITEMS_PATH}/${id}`).remove();
+  } else {
+    localStorage.setItem('babyItems_' + COUPLE_CODE, JSON.stringify(items));
+    renderAll();
+  }
+}
+
+async function bulkSave() {
+  if (DB) {
+    const obj = {};
+    items.forEach(({ id, ...data }) => { obj[id] = data; });
+    await DB.ref(ITEMS_PATH).set(obj);
+  }
+}
+
+// ═══════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.getElementById('nav-'+name).classList.add('active');
+  document.getElementById('fab').style.display = name === 'list' ? 'flex' : 'none';
+  if (name === 'dash') renderDash();
+  if (name === 'list') renderList();
+  if (name === 'settings') renderSettings();
+  // 페이지별 광고 배너 전환
+  switchAdBanner(name);
+}
+
+// 페이지에 따라 광고 배너 슬롯 전환
+function switchAdBanner(page) {
+  const general  = document.getElementById('ad-slot-general');
+  const coupang  = document.getElementById('ad-slot-coupang');
+  if (!general || !coupang) return;
+  if (page === 'dash') {
+    general.classList.add('active');
+    coupang.classList.remove('active');
+  } else {
+    general.classList.remove('active');
+    coupang.classList.add('active');
+  }
+  // GA4 페이지뷰 추적
+  if (typeof gtag !== 'undefined') {
+    const titles = { dash:'대시보드', list:'체크리스트', settings:'설정' };
+    gtag('event', 'page_view', { page_title: titles[page] || page });
+  }
+}
+
+// GA4 쿠팡 배너 클릭 추적
+function trackCoupangClick() {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'coupang_banner_click', {
+      event_category: 'monetization',
+      event_label: 'coupang_affiliate'
+    });
+  }
+}
+
+// ═══════════════════════════════════════
+// RENDER ALL
+// ═══════════════════════════════════════
+function renderAll() {
+  renderDash();
+  renderList();
+  renderSettings();
+}
+
+// ═══════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════
+function renderDash() {
+  const total = items.length;
+  const done = items.filter(i=>i.done).length;
+  const pct = total ? Math.round(done/total*100) : 0;
+
+  document.getElementById('d-pct').textContent = pct + '%';
+  document.getElementById('d-prog').style.width = pct + '%';
+  document.getElementById('d-cap').textContent = `${done} / ${total} 항목`;
+  document.getElementById('d-total').textContent = total;
+  document.getElementById('d-done').textContent = done;
+  document.getElementById('d-todo').textContent = total - done;
+
+  const before = items.filter(i=>i.timing==='출산전').length;
+  const after = items.filter(i=>i.timing==='출산후').length;
+  document.getElementById('d-before').textContent = before;
+  document.getElementById('d-after').textContent = after;
+  document.getElementById('d-total2').textContent = total;
+
+  // cat progress
+  const cats = [...new Set(items.map(i=>i.cat))];
+  document.getElementById('cat-dash-list').innerHTML = cats.map(cat => {
+    const ci = items.filter(i=>i.cat===cat);
+    const cd = ci.filter(i=>i.done).length;
+    const cp = ci.length ? Math.round(cd/ci.length*100) : 0;
+    const meta = getCatMeta(cat);
+    return `<div class="cat-dash-item" onclick="goPage('list');setCatFilter('${cat}',null)">
+      <span class="cd-icon">${meta.icon}</span>
+      <div class="cd-info">
+        <div class="cd-name">${cat}</div>
+        <div class="cd-bar-wrap"><div class="cd-bar-fill" style="width:${cp}%;background:${meta.color}"></div></div>
+      </div>
+      <div class="cd-count">${cd}/${ci.length}</div>
+    </div>`;
+  }).join('');
+
+  // budget
+  const totalBudget = items.reduce((s,i)=>s+(i.price||0),0);
+  let budgetHTML = cats.map(cat => {
+    const catBudget = items.filter(i=>i.cat===cat).reduce((s,i)=>s+(i.price||0),0);
+    if (!catBudget) return '';
+    return `<div class="budget-row">
+      <span>${getCatMeta(cat).icon} ${cat}</span>
+      <span class="b-val">${catBudget.toLocaleString()}원</span>
+    </div>`;
+  }).filter(Boolean).join('');
+  budgetHTML += `<div class="budget-row">
+    <span>💰 합계</span>
+    <span class="b-val" style="font-size:1rem">${totalBudget.toLocaleString()}원</span>
+  </div>`;
+  document.getElementById('budget-card').innerHTML = budgetHTML || '<div style="padding:10px;color:#9CA3AF;font-size:0.82rem;text-align:center">가격 입력 후 표시됩니다</div>';
+}
+
+// ═══════════════════════════════════════
+// CHECKLIST
+// ═══════════════════════════════════════
+function setCatFilter(cat, btn) {
+  currentCatFilter = cat;
+  document.querySelectorAll('.cf-btn').forEach(b => b.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  else {
+    document.querySelectorAll('.cf-btn').forEach(b => {
+      if (b.dataset.cat === cat) b.classList.add('on');
+    });
+  }
+  renderList();
+}
+
+function renderList() {
+  // rebuild filter buttons using dynamic cats
+  const allCats = getAllCats().filter(cat => items.some(i=>i.cat===cat));
+  const fw = document.getElementById('cat-filter-wrap');
+  fw.innerHTML = `<button class="cf-btn ${currentCatFilter==='all'?'on':''}" data-cat="all" onclick="setCatFilter('all',this)">전체</button>`;
+  allCats.forEach(cat => {
+    const meta = getCatMeta(cat);
+    fw.innerHTML += `<button class="cf-btn ${currentCatFilter===cat?'on':''}" data-cat="${cat}" onclick="setCatFilter('${cat}',this)">${meta.icon} ${cat}</button>`;
+  });
+
+  const filtered = currentCatFilter === 'all' ? items : items.filter(i=>i.cat===currentCatFilter);
+  const container = document.getElementById('items-list');
+
+  if (!filtered.length) {
+    container.innerHTML = '<div class="empty-msg">✨ 항목이 없어요</div>';
+    return;
+  }
+
+  const groupCats = currentCatFilter === 'all'
+    ? allCats.filter(cat => filtered.some(i=>i.cat===cat))
+    : [currentCatFilter];
+
+  container.innerHTML = groupCats.map(cat => {
+    const catItems = filtered.filter(i=>i.cat===cat);
+    if (!catItems.length) return '';
+    const meta = getCatMeta(cat);
+    const doneCnt = catItems.filter(i=>i.done).length;
+    const safeId = cat.replace(/[^a-zA-Z0-9가-힣]/g,'_');
+    return `
+    <div class="cat-section">
+      <div class="cat-section-head" onclick="toggleSection('sec-${safeId}',this)">
+        <span class="cs-icon">${meta.icon}</span>
+        <span class="cs-name">${cat}</span>
+        <span class="cs-badge">${doneCnt}/${catItems.length}</span>
+        <span class="cs-arrow">▾</span>
+      </div>
+      <div id="sec-${safeId}">
+        ${catItems.map(item => renderItemCard(item)).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  container.querySelectorAll('.item-chk-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.id;
+      const item = items.find(i=>i.id===id);
+      if (!item) return;
+      item.done = !item.done;
+      btn.closest('.item-card').classList.toggle('done', item.done);
+      btn.innerHTML = item.done ? '✓' : '';
+      btn.closest('.item-card').querySelector('.item-name').style.textDecoration = item.done ? 'line-through' : '';
+      btn.closest('.item-card').querySelector('.item-name').style.color = item.done ? '#9CA3AF' : '';
+      await saveItem(item);
+      renderDash();
+    });
+  });
+}
+
+function fmtPrice(p) {
+  if (!p) return null;
+  return Number(p).toLocaleString('ko-KR') + '원';
+}
+
+function renderItemCard(item) {
+  const timingTag = item.timing === '출산전'
+    ? '<span class="tag tag-before">출산전</span>'
+    : '<span class="tag tag-after">출산후</span>';
+  const methodTag = item.method === '구매'
+    ? '<span class="tag tag-buy">구매</span>'
+    : item.method === '대여'
+    ? '<span class="tag tag-rent">대여</span>'
+    : '<span class="tag tag-carrot">🥕당근</span>';
+  const priceLabel = item.price
+    ? `<span class="price-display">${fmtPrice(item.price)}</span>`
+    : `<span class="price-display empty">가격 미입력</span>`;
+
+  return `<div class="item-card ${item.done?'done':''}" id="ic-${item.id}">
+    <div class="item-chk item-chk-btn" data-id="${item.id}">${item.done?'✓':''}</div>
+    <div class="item-body">
+      <div class="item-name" style="${item.done?'text-decoration:line-through;color:#9CA3AF':''}">${item.name}</div>
+      <div class="item-tags">${timingTag}${methodTag}</div>
+      ${item.note ? `<div class="item-note">${item.note}</div>` : ''}
+    </div>
+    <div class="item-price-wrap">
+      ${priceLabel}
+      <div class="item-action-row">
+        <button class="btn-edit-item" onclick="openEditSheet('${item.id}')">✏️</button>
+        <button class="btn-del-item" onclick="confirmDel('${item.id}')">✕</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleSection(id, head) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const collapsed = el.style.display === 'none';
+  el.style.display = collapsed ? '' : 'none';
+  head.classList.toggle('collapsed', !collapsed);
+}
+
+// ═══════════════════════════════════════
+// EDIT ITEM SHEET
+// ═══════════════════════════════════════
+function openEditSheet(id) {
+  const item = items.find(i=>i.id===id);
+  if (!item) return;
+  document.getElementById('e-id').value = id;
+  document.getElementById('e-name').value = item.name;
+  document.getElementById('e-cat').value = item.cat;
+  document.getElementById('e-price').value = item.price || '';
+  document.getElementById('e-timing').value = item.timing;
+  document.getElementById('e-method').value = item.method;
+  document.getElementById('e-note').value = item.note || '';
+  document.getElementById('sheet-overlay').classList.add('open');
+  document.getElementById('edit-sheet').classList.add('open');
+  setTimeout(() => document.getElementById('e-name').focus(), 350);
+}
+function closeEditSheet() {
+  document.getElementById('sheet-overlay').classList.remove('open');
+  document.getElementById('edit-sheet').classList.remove('open');
+}
+async function submitEdit() {
+  const id = document.getElementById('e-id').value;
+  const item = items.find(i=>i.id===id);
+  if (!item) return;
+  const name = document.getElementById('e-name').value.trim();
+  if (!name) { showToast('품목명을 입력해주세요!'); return; }
+  item.name = name;
+  item.cat = document.getElementById('e-cat').value;
+  item.price = parseInt(document.getElementById('e-price').value) || 0;
+  item.timing = document.getElementById('e-timing').value;
+  item.method = document.getElementById('e-method').value;
+  item.note = document.getElementById('e-note').value.trim();
+  await saveItem(item);
+  closeEditSheet();
+  showToast('✅ 저장되었습니다!');
+  renderAll();
+}
+async function deleteFromEdit() {
+  const id = document.getElementById('e-id').value;
+  if (!confirm('이 항목을 삭제할까요?')) return;
+  closeEditSheet();
+  await removeItem(id);
+  renderAll();
+}
+
+// ═══════════════════════════════════════
+// ADD ITEM
+// ═══════════════════════════════════════
+function openAddSheet() {
+  document.getElementById('sheet-overlay').classList.add('open');
+  document.getElementById('add-sheet').classList.add('open');
+  setTimeout(() => document.getElementById('f-name').focus(), 400);
+}
+function closeAddSheet() {
+  document.getElementById('sheet-overlay').classList.remove('open');
+  document.getElementById('add-sheet').classList.remove('open');
+}
+
+async function submitAdd() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { showToast('품목명을 입력해주세요!'); return; }
+  const newItem = {
+    id: 'u_' + Date.now(),
+    cat: document.getElementById('f-cat').value,
+    name,
+    done: false,
+    price: parseInt(document.getElementById('f-price').value) || 0,
+    timing: document.getElementById('f-timing').value,
+    method: document.getElementById('f-method').value,
+    note: document.getElementById('f-note').value.trim()
+  };
+  items.push(newItem);
+  await saveItem(newItem);
+  closeAddSheet();
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-price').value = '';
+  document.getElementById('f-note').value = '';
+  showToast('✅ 추가되었습니다!');
+  renderAll();
+}
+
+// ═══════════════════════════════════════
+// DELETE
+// ═══════════════════════════════════════
+async function confirmDel(id) {
+  if (!confirm('이 항목을 삭제할까요?')) return;
+  await removeItem(id);
+  renderAll();
+}
+
+// ═══════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════
+function renderSettings() {
+  const done = items.filter(i=>i.done).length;
+  document.getElementById('total-count-text').textContent = `${items.length}개 항목`;
+  document.getElementById('done-count-text').textContent = `${done}개 완료 (${items.length?Math.round(done/items.length*100):0}%)`;
+  // D-day input 반영
+  if (ddayDate) {
+    document.getElementById('dday-input').value = ddayDate;
+    updateDdayPreview(ddayDate);
+  }
+  renderCatManageList();
+  refreshCatSelects();
+}
+
+// ═══════════════════════════════════════
+// D-DAY
+// ═══════════════════════════════════════
+function calcDday(dateStr) {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const due = new Date(dateStr); due.setHours(0,0,0,0);
+  const diffMs = due - today;
+  const diffDays = Math.round(diffMs / 86400000);
+  // 임신 총 280일 (40주), 예정일에서 역산
+  const daysPregnant = 280 - diffDays;
+  const week = Math.max(1, Math.min(42, Math.floor(daysPregnant / 7)));
+  const day = daysPregnant % 7;
+  return { diffDays, week, day, daysPregnant };
+}
+
+function updateDdayBanner() {
+  const banner = document.getElementById('dday-banner');
+  if (!ddayDate) {
+    banner.style.display = 'none';
+    document.body.classList.remove('has-dday');
+    return;
+  }
+  banner.style.display = 'block';
+  document.body.classList.add('has-dday');
+
+  const { diffDays, week, day } = calcDday(ddayDate);
+  const due = new Date(ddayDate);
+  const dueFmt = `${due.getMonth()+1}/${due.getDate()}`;
+
+  document.getElementById('dday-week').textContent = `${week}주 ${day}일`;
+  if (diffDays > 0) {
+    document.getElementById('dday-direction').textContent = '출산까지';
+    document.getElementById('dday-count').textContent = `D-${diffDays}`;
+  } else if (diffDays === 0) {
+    document.getElementById('dday-direction').textContent = '🎉 오늘!';
+    document.getElementById('dday-count').textContent = 'D-Day';
+  } else {
+    document.getElementById('dday-direction').textContent = '출산 후';
+    document.getElementById('dday-count').textContent = `D+${Math.abs(diffDays)}`;
+  }
+  document.getElementById('dday-date').textContent = dueFmt;
+
+  // progress bar: 0주(0%) ~ 40주(100%)
+  const pct = Math.min(100, Math.max(0, Math.round(week / 40 * 100)));
+  document.getElementById('dday-bar-fill').style.width = pct + '%';
+  document.getElementById('dday-bar-label').textContent = `임신 ${week}주 · ${pct}%`;
+}
+
+function updateDdayPreview(dateStr) {
+  if (!dateStr) { document.getElementById('dday-preview').style.display='none'; return; }
+  const { diffDays, week, day } = calcDday(dateStr);
+  const due = new Date(dateStr);
+  const status = diffDays > 0 ? `출산까지 D-${diffDays}` : diffDays===0 ? '🎉 오늘이 예정일!' : `출산 후 D+${Math.abs(diffDays)}`;
+  document.getElementById('dday-preview-text').innerHTML =
+    `🤰 <b>임신 ${week}주 ${day}일</b> &nbsp;·&nbsp; ${status}<br>📅 예정일: ${due.getFullYear()}.${due.getMonth()+1}.${due.getDate()}`;
+  document.getElementById('dday-preview').style.display = 'block';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const inp = document.getElementById('dday-input');
+  if (inp) inp.addEventListener('input', e => updateDdayPreview(e.target.value));
+});
+
+async function saveDday() {
+  const val = document.getElementById('dday-input').value;
+  if (!val) { showToast('날짜를 선택해주세요'); return; }
+  ddayDate = val;
+  await saveMeta();
+  updateDdayBanner();
+  showToast('✅ 예정일이 저장되었습니다!');
+}
+
+async function clearDday() {
+  ddayDate = null;
+  document.getElementById('dday-input').value = '';
+  document.getElementById('dday-preview').style.display = 'none';
+  await saveMeta();
+  updateDdayBanner();
+  showToast('초기화되었습니다');
+}
+
+// ═══════════════════════════════════════
+// CATEGORY MANAGEMENT
+// ═══════════════════════════════════════
+function buildEmojiGrid() {
+  const grid = document.getElementById('emoji-grid');
+  if (!grid) return;
+  grid.innerHTML = EMOJI_LIST.map(e =>
+    `<button onclick="selectEmoji('${e}')">${e}</button>`
+  ).join('');
+}
+
+function toggleEmojiPicker() {
+  document.getElementById('emoji-picker').classList.toggle('open');
+}
+
+function selectEmoji(e) {
+  selectedEmoji = e;
+  document.getElementById('cat-emoji-btn').textContent = e;
+  document.getElementById('emoji-picker').classList.remove('open');
+}
+
+// 외부 클릭 시 이모지 피커 닫기
+document.addEventListener('click', e => {
+  const wrap = document.getElementById('emoji-picker');
+  const btn = document.getElementById('cat-emoji-btn');
+  if (wrap && !wrap.contains(e.target) && e.target !== btn) {
+    wrap.classList.remove('open');
+  }
+});
+
+async function addCategory() {
+  const nameInp = document.getElementById('new-cat-name');
+  const name = nameInp.value.trim();
+  if (!name) { showToast('카테고리명을 입력해주세요'); return; }
+  if (getAllCats().includes(name)) { showToast('이미 존재하는 카테고리입니다'); return; }
+  customCats.push({ name, icon: selectedEmoji });
+  await saveMeta();
+  nameInp.value = '';
+  selectedEmoji = '📦';
+  document.getElementById('cat-emoji-btn').textContent = '📦';
+  renderCatManageList();
+  refreshCatSelects();
+  showToast(`✅ "${name}" 카테고리 추가!`);
+}
+
+async function deleteCategory(name) {
+  const usedCount = items.filter(i=>i.cat===name).length;
+  if (usedCount > 0) {
+    if (!confirm(`"${name}" 카테고리에 ${usedCount}개 항목이 있습니다.\n삭제하면 해당 항목들은 "기타"로 이동됩니다.\n계속할까요?`)) return;
+    items.forEach(i => { if (i.cat===name) i.cat='기타'; });
+    for (const item of items.filter(i=>i.cat==='기타')) await saveItem(item);
+  }
+  customCats = customCats.filter(c=>c.name!==name);
+  await saveMeta();
+  renderCatManageList();
+  refreshCatSelects();
+  renderAll();
+  showToast(`"${name}" 카테고리 삭제됨`);
+}
+
+function renderCatManageList() {
+  const el = document.getElementById('cat-manage-list');
+  if (!el) return;
+  const allCats = getAllCats();
+  el.innerHTML = allCats.map(cat => {
+    const meta = getCatMeta(cat);
+    const cnt = items.filter(i=>i.cat===cat).length;
+    const isBuiltin = BUILTIN_CATS.includes(cat);
+    return `<div class="cat-manage-item ${isBuiltin?'builtin':''}">
+      <span class="cm-icon">${meta.icon}</span>
+      <span class="cm-name">${cat}</span>
+      <span class="cm-count">${cnt}개</span>
+      ${!isBuiltin ? `<button class="cm-del" onclick="deleteCategory('${cat}')">✕</button>` : '<span style="width:28px"></span>'}
+    </div>`;
+  }).join('');
+}
+
+function refreshCatSelects() {
+  const allCats = getAllCats();
+  const optHTML = allCats.map(cat => {
+    const meta = getCatMeta(cat);
+    return `<option value="${cat}">${meta.icon} ${cat}</option>`;
+  }).join('');
+  ['f-cat','e-cat'].forEach(id => {
+    const sel = document.getElementById(id);
+    if (sel) { const cur = sel.value; sel.innerHTML = optHTML; sel.value = cur || allCats[0]; }
+  });
+}
+
+async function confirmDeleteDone() {
+  const doneItems = items.filter(i=>i.done);
+  if (!doneItems.length) { showToast('완료된 항목이 없습니다'); return; }
+  if (!confirm(`완료 항목 ${doneItems.length}개를 삭제할까요?`)) return;
+  for (const item of doneItems) await removeItem(item.id);
+  showToast(`🗑 ${doneItems.length}개 삭제됨`);
+}
+
+async function resetConfirm() {
+  if (!confirm('기본 데이터로 초기화할까요?\n기존 완료 기록이 모두 사라집니다.')) return;
+  items = deepCopy(DEFAULT_DATA);
+  await bulkSave();
+  renderAll();
+  showToast('🔄 초기화 완료!');
+}
+
+// ═══════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ═══════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════
+// 앱 시작 (스크립트가 body 끝에 위치하므로 DOM은 이미 준비됨)
+initApp();
+
+// ═══════════════════════════════════════
+// PWA - Service Worker 등록
+// ═══════════════════════════════════════
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => console.log('✅ SW 등록 완료'))
+      .catch(e => console.warn('SW 등록 실패:', e));
+  });
+}
+
+// ═══════════════════════════════════════
+// PWA - 홈화면 설치 유도 배너
+// ═══════════════════════════════════════
+let _deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  _deferredPrompt = e;
+  // 앱 진입 3초 후 설치 배너 표시
+  setTimeout(showInstallBanner, 3000);
+});
+
+function showInstallBanner() {
+  if (!_deferredPrompt) return;
+  if (localStorage.getItem('installDismissed')) return;
+
+  const banner = document.createElement('div');
+  banner.id = 'install-banner';
+  banner.innerHTML = `
+    <div style="
+      position:fixed; top:calc(var(--header-h) + var(--dday-h) + 8px);
+      left:12px; right:12px; z-index:600;
+      background:white; border-radius:16px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.15);
+      border:1.5px solid var(--pink-light);
+      padding:14px 16px;
+      display:flex; align-items:center; gap:12px;
+      animation: fadeUp 0.3s ease;
+    ">
+      <span style="font-size:2rem">🍼</span>
+      <div style="flex:1">
+        <div style="font-size:0.85rem;font-weight:700;margin-bottom:2px">홈화면에 추가하기</div>
+        <div style="font-size:0.72rem;color:#9CA3AF">앱처럼 빠르게 실행할 수 있어요</div>
+      </div>
+      <button onclick="doInstall()" style="
+        background:linear-gradient(135deg,#F472B6,#DB2777);
+        color:white; border:none; border-radius:10px;
+        padding:8px 14px; font-size:0.78rem; font-weight:700;
+        font-family:'Noto Sans KR',sans-serif; cursor:pointer;
+      ">설치</button>
+      <button onclick="dismissInstall()" style="
+        background:none; border:none; color:#9CA3AF;
+        font-size:1.2rem; cursor:pointer; padding:4px;
+      ">✕</button>
+    </div>`;
+  document.body.appendChild(banner);
+}
+
+async function doInstall() {
+  if (!_deferredPrompt) return;
+  _deferredPrompt.prompt();
+  const { outcome } = await _deferredPrompt.userChoice;
+  if (outcome === 'accepted') showToast('✅ 홈화면에 추가됐어요!');
+  _deferredPrompt = null;
+  dismissInstall();
+}
+
+function dismissInstall() {
+  const b = document.getElementById('install-banner');
+  if (b) b.remove();
+  localStorage.setItem('installDismissed', '1');
+}
+
+window.addEventListener('appinstalled', () => {
+  showToast('🎉 앱 설치 완료!');
+  _deferredPrompt = null;
+});
+</script>
+<!--
+════════════════════════════════════════════════════════════
+💰 광고 수익 연동 현황 (켈로그님 전용)
+════════════════════════════════════════════════════════════
+
+✅ 전체 배너 → 쿠팡 파트너스 완료! (AF4632663)
+   - 대시보드 하단
+   - 체크리스트 하단
+   - 설정 하단
+   링크: https://link.coupang.com/a/ebbFnU
+
+⏳ 추후 카카오 애드핏 심사 완료 시
+   → DAN-XXXXXXXXXXXXXXXX 알려주시면
+     대시보드 배너만 애드핏으로 교체 가능
+
+════════════════════════════════════════════════════════════
+-->
+</body>
+</html>
