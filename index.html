@@ -129,6 +129,7 @@ body {
   --header-h: 56px;
   --dday-h: 0px;
   --nav-h: 64px;
+  --banner-h: 64px; /* 쿠팡 배너 높이 */
 }
 body.has-dday { --dday-h: 86px; }
 
@@ -411,7 +412,7 @@ body.has-dday { --dday-h: 86px; }
 .add-fab {
   position: fixed;
   right: 18px;
-  bottom: calc(var(--nav-h) + var(--safe-bottom) + 18px);
+  bottom: calc(var(--nav-h) + var(--safe-bottom) + var(--banner-h) + 14px);
   width: 52px; height: 52px;
   background: linear-gradient(135deg, #F472B6, #DB2777);
   color: white;
@@ -430,7 +431,7 @@ body.has-dday { --dday-h: 86px; }
 .add-fab:active { transform: scale(0.9); }
 
 /* ITEM LIST */
-.items-list { display: flex; flex-direction: column; gap: 0; }
+.items-list { display: flex; flex-direction: column; gap: 0; padding-bottom: 16px; }
 .cat-section { margin-bottom: 16px; }
 .cat-section-head {
   display: flex;
@@ -679,8 +680,26 @@ body.has-dday { --dday-h: 86px; }
 }
 .add-sheet.open { transform: translateY(0); }
 
-.sheet-handle { width: 36px; height: 4px; background: #E5E7EB; border-radius: 99px; margin: 0 auto 16px; }
-.sheet-title { font-family: 'Gowun Dodum', serif; font-size: 1.1rem; margin-bottom: 16px; color: var(--pink-deep); }
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.sheet-title { font-family: 'Gowun Dodum', serif; font-size: 1.1rem; color: var(--pink-deep); }
+.sheet-close-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #F3F4F6;
+  color: #6B7280;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+.sheet-close-btn:active { background: #E5E7EB; color: #111; }
 
 .form-group { margin-bottom: 13px; }
 .form-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; margin-bottom: 5px; display: block; }
@@ -784,7 +803,7 @@ body.has-dday { --dday-h: 86px; }
 /* ── TOAST ── */
 .toast {
   position: fixed;
-  bottom: calc(var(--nav-h) + var(--safe-bottom) + 14px);
+  bottom: calc(var(--nav-h) + var(--safe-bottom) + var(--banner-h) + 14px);
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   background: #1F2937;
@@ -1104,12 +1123,11 @@ body.has-dday { --dday-h: 86px; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: height 0.2s ease;
-  min-height: 50px;
+  height: var(--banner-h);
 }
 /* 광고 있을 때 main 하단 여백 */
 body.has-ad .main {
-  padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 64px + 16px);
+  padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + var(--banner-h) + 24px);
 }
 /* 쿠팡 배너 (체크리스트·설정) */
 .ad-slot { display: none; width: 100%; }
@@ -1118,7 +1136,7 @@ body.has-ad .main {
 /* 쿠팡 배너 플레이스홀더 스타일 */
 .cp-banner-ph {
   width: 100%;
-  height: 64px;
+  height: var(--banner-h);
   background: linear-gradient(135deg, #FEEB00 0%, #FFD400 100%);
   display: flex; align-items: center; justify-content: center;
   gap: 10px;
@@ -1135,7 +1153,7 @@ body.has-ad .main {
   font-size: 0.82rem; font-weight: 800; color: #111; line-height: 1.2;
 }
 .cp-banner-ph .cp-b-sub {
-  font-size: 0.65rem; color: #555; line-height: 1.2;
+  font-size: 0.65rem; color: #555; line-height: 1.5;
 }
 .cp-banner-ph .cp-b-arrow {
   font-size: 1rem; color: #333; margin-left: 4px;
@@ -1439,7 +1457,7 @@ body.has-ad .main {
       <span class="cp-b-logo">🛒</span>
       <div class="cp-b-text">
         <span class="cp-b-main">쿠팡에서 신생아 용품 최저가 확인</span>
-        <span class="cp-b-sub">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</span>
+        <span class="cp-b-sub">이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.</span>
       </div>
       <span class="cp-b-arrow">›</span>
     </a>
@@ -1456,7 +1474,7 @@ body.has-ad .main {
       <span class="cp-b-logo">🛒</span>
       <div class="cp-b-text">
         <span class="cp-b-main">쿠팡에서 신생아 용품 최저가 확인</span>
-        <span class="cp-b-sub">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</span>
+        <span class="cp-b-sub">이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.</span>
       </div>
       <span class="cp-b-arrow">›</span>
     </a>
@@ -1486,8 +1504,10 @@ body.has-ad .main {
 <!-- ADD SHEET -->
 <div class="sheet-overlay" id="sheet-overlay" onclick="closeAddSheet();closeEditSheet()"></div>
 <div class="add-sheet" id="add-sheet">
-  <div class="sheet-handle"></div>
-  <div class="sheet-title">✏️ 항목 추가</div>
+  <div class="sheet-header">
+    <div class="sheet-title">✏️ 항목 추가</div>
+    <button class="sheet-close-btn" onclick="closeAddSheet()">✕</button>
+  </div>
   <div class="form-group">
     <label class="form-label">품목명 *</label>
     <input class="form-inp" id="f-name" placeholder="예: 아기 체온계" />
@@ -1511,7 +1531,8 @@ body.has-ad .main {
     </div>
     <div class="form-group">
       <label class="form-label">가격 (원)</label>
-      <input class="form-inp" id="f-price" type="number" placeholder="0" inputmode="numeric" />
+      <input class="form-inp" id="f-price" type="text" placeholder="0"
+             inputmode="numeric" oninput="formatPriceInput(this)" />
     </div>
   </div>
   <div class="form-row">
@@ -1542,8 +1563,10 @@ body.has-ad .main {
 
 <!-- EDIT SHEET -->
 <div class="edit-sheet" id="edit-sheet">
-  <div class="sheet-handle"></div>
-  <div class="sheet-title">✏️ 항목 수정</div>
+  <div class="sheet-header">
+    <div class="sheet-title">✏️ 항목 수정</div>
+    <button class="sheet-close-btn" onclick="closeEditSheet()">✕</button>
+  </div>
   <input type="hidden" id="e-id">
   <div class="form-group">
     <label class="form-label">품목명</label>
@@ -1568,7 +1591,8 @@ body.has-ad .main {
     </div>
     <div class="form-group">
       <label class="form-label">가격 (원)</label>
-      <input class="form-inp" id="e-price" type="number" placeholder="0" inputmode="numeric" />
+      <input class="form-inp" id="e-price" type="text" placeholder="0"
+             inputmode="numeric" oninput="formatPriceInput(this)" />
     </div>
   </div>
   <div class="form-row">
@@ -2190,6 +2214,17 @@ function renderList() {
   });
 }
 
+// 가격 입력 시 실시간 쉼표 포맷
+function formatPriceInput(inp) {
+  const raw = inp.value.replace(/[^0-9]/g, '');
+  inp.value = raw ? Number(raw).toLocaleString('ko-KR') : '';
+}
+
+// 가격 문자열 → 숫자 (쉼표 제거)
+function parsePrice(str) {
+  return parseInt((str || '').replace(/[^0-9]/g, '')) || 0;
+}
+
 function fmtPrice(p) {
   if (!p) return null;
   return Number(p).toLocaleString('ko-KR') + '원';
@@ -2242,7 +2277,7 @@ function openEditSheet(id) {
   document.getElementById('e-id').value = id;
   document.getElementById('e-name').value = item.name;
   document.getElementById('e-cat').value = item.cat;
-  document.getElementById('e-price').value = item.price || '';
+  document.getElementById('e-price').value = item.price ? Number(item.price).toLocaleString('ko-KR') : '';
   document.getElementById('e-timing').value = item.timing;
   document.getElementById('e-method').value = item.method;
   document.getElementById('e-note').value = item.note || '';
@@ -2262,7 +2297,7 @@ async function submitEdit() {
   if (!name) { showToast('품목명을 입력해주세요!'); return; }
   item.name = name;
   item.cat = document.getElementById('e-cat').value;
-  item.price = parseInt(document.getElementById('e-price').value) || 0;
+  item.price = parsePrice(document.getElementById('e-price').value);
   item.timing = document.getElementById('e-timing').value;
   item.method = document.getElementById('e-method').value;
   item.note = document.getElementById('e-note').value.trim();
@@ -2300,7 +2335,7 @@ async function submitAdd() {
     cat: document.getElementById('f-cat').value,
     name,
     done: false,
-    price: parseInt(document.getElementById('f-price').value) || 0,
+    price: parsePrice(document.getElementById('f-price').value),
     timing: document.getElementById('f-timing').value,
     method: document.getElementById('f-method').value,
     note: document.getElementById('f-note').value.trim()
