@@ -1209,6 +1209,7 @@ body.has-ad .main {
 <!-- HEADER -->
 <div class="header">
   <div class="header-title">🍼 아기맞이 준비물</div>
+  <div class="fb-pill" id="fb-pill">● 연결중</div>
 </div>
 
 <!-- D-DAY BANNER (헤더 바로 아래) -->
@@ -1751,6 +1752,7 @@ let currentCatFilter = 'all';
 let saveTimer = null;
 let ddayDate   = null;
 let customCats = [];
+let _itemsInitialized = false; // 최초 데이터 초기화 여부
 
 const BUILTIN_CATS = [
   '의류/손수건','수유용품','배변용품','수면용품','목욕용품',
@@ -1797,6 +1799,7 @@ function setPaths(code) {
   COUPLE_CODE = code;
   ITEMS_PATH  = `couples/${code}/items`;
   META_PATH   = `couples/${code}/meta`;
+  _itemsInitialized = false; // 새 코드 접속 시 초기화 플래그 리셋
 }
 
 // 로컬스토리지에서 커플코드 불러오기
@@ -1913,13 +1916,24 @@ async function launchApp() {
 
     try {
       await loadMeta();
-      await loadFromFirebase();
 
-      // 실시간 동기화
-      DB.ref(ITEMS_PATH).on('value', snap => {
-        items = rtdbToArray(snap.val());
-        renderAll();
+      // ✅ onValue 하나로 초기로드 + 실시간동기화 통합
+      // (once + onValue 이중구조 제거 → 타이밍 버그 해결)
+      DB.ref(ITEMS_PATH).on('value', async snap => {
+        if (!snap.exists()) {
+          // 최초 접속 — 기본 데이터 저장 (코드 생성자만)
+          if (!_itemsInitialized) {
+            _itemsInitialized = true;
+            items = deepCopy(DEFAULT_DATA);
+            await bulkSave();
+          }
+        } else {
+          _itemsInitialized = true;
+          items = rtdbToArray(snap.val());
+          renderAll();
+        }
       });
+
       DB.ref(META_PATH).on('value', snap => {
         const val = snap.val() || {};
         ddayDate   = val.ddayDate   || null;
@@ -1930,8 +1944,28 @@ async function launchApp() {
         const inp = document.getElementById('dday-input');
         if (inp) inp.value = ddayDate || '';
       });
+
+      // ✅ Firebase 연결 성공 표시
+      const pill = document.getElementById('fb-pill');
+      if (pill) { pill.textContent = '● ' + COUPLE_CODE; pill.className = 'fb-pill ok'; }
+
+      // 아이폰 사파리 대응: 연결 상태 모니터링
+      DB.ref('.info/connected').on('value', snap => {
+        const connected = snap.val();
+        const p = document.getElementById('fb-pill');
+        if (!p) return;
+        if (connected) {
+          p.textContent = '● ' + COUPLE_CODE;
+          p.className = 'fb-pill ok';
+        } else {
+          p.textContent = '● 재연결중...';
+          p.className = 'fb-pill';
+        }
+      });
     } catch(e) {
       console.warn('launchApp Firebase error:', e);
+      const pill = document.getElementById('fb-pill');
+      if (pill) { pill.textContent = '● 오류'; pill.className = 'fb-pill'; }
       fallbackToLocal();
     }
   } else {
@@ -1946,8 +1980,8 @@ async function launchApp() {
 }
 
 function fallbackToLocal() {
-  // fb-pill removed
-  // fb-status removed
+  const pill = document.getElementById('fb-pill');
+  if (pill) { pill.textContent = '● 로컬모드'; pill.className = 'fb-pill'; }
   try {
     const savedMeta = localStorage.getItem('appMeta_' + COUPLE_CODE);
     if (savedMeta) {
